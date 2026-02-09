@@ -1,13 +1,10 @@
-import { Button } from "antd";
 import "./App.css";
+import Home from "./pages";
 
 function App() {
   return (
     <>
-      <div className="text-red-500">Hello Blessed</div>
-        <div style={{ padding: 24 }}>
-      <Button type="primary">Scaripay Button</Button>
-    </div>
+      <Home />
     </>
   );
 }
