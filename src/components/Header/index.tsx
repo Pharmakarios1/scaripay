@@ -1,6 +1,6 @@
 import { Button } from "antd";
 import ScaripayLogo from "../../assets/icon.png";
-import { useState } from "react";
+
 import { MenuOutlined } from "@ant-design/icons";
 import useMobile from "../../Hooks/useMobile";
 
