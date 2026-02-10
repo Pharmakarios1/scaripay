@@ -1,6 +1,5 @@
 import { Button } from "antd";
 import ScaripayLogo from "../../assets/icon.png";
-
 import { MenuOutlined } from "@ant-design/icons";
 import useMobile from "../../Hooks/useMobile";
 
