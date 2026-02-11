@@ -3,9 +3,9 @@ import HeroHappyguy from "@assets/Happy-guy 1.png";
 const HeroImage = () => {
   // const isMobile = useMobile();
   return (
-    <div className="relative flex items-center justify-center md:w-1/2 lg:-translate-x-[-20%] object-contain ">
-      <div className="absolute top-[30%] left-1/2 translate-x-[-70%] -translate-y-[60%] w-60 h-60 md:w-80 md:h-80 bg-[#fff5d1] rounded-full mix-blend-multiply filter animate-blob "></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-[-5%] -translate-y-[30%] w-60 h-60 md:w-76 md:h-76 bg-[#e8f0fe] rounded-full mix-blend-multiply filter animate-pulse"></div>
+    <div className="relative flex items-center justify-center md:w-1/2 lg:-translate-x-[-20%] object-contain overflow-hidden px-0!">
+      <div className="absolute top-[30%] left-1/2 translate-x-[-50%] -translate-y-[60%] md:-translate-y-[45%] w-40 h-40 md:w-80 md:h-80  bg-[#fff5d1] rounded-full mix-blend-multiply filter animate-blob "></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-[-20%] -translate-y-[30%]  w-48 h-48 md:w-60 md:h-60  bg-[#e8f0fe] rounded-full mix-blend-multiply filter animate-pulse"></div>
       <div className="relative z-10 flex justify-center items-center ">
         <img
           src={HeroHappyguy}

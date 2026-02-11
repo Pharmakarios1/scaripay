@@ -47,10 +47,10 @@ const PhoneField: React.FC = () => {
         </Form.Item>
       </Form>
 
-      <div className="flex justify-between">
-        <img src={Google} alt="Googledownload" className="h-11" />
+      <div className="flex justify-between w-full md:w-[80%]">
+        <img src={Google} alt="Googledownload" className="h-8" />
         <div className="relative">
-          <img src={Apple} alt="appledownload" />
+          <img src={Apple} alt="appledownload" className="h-8" />
 
           <img
             src={Ussd}

@@ -3,7 +3,7 @@ import HeroImage from "./_partials/HeroImage";
 import HeroTexts from "./_partials/HeroTexts";
 const Hero = () => {
   return (
-    <div className="bg-gray-50 mt-10 md:mt-30 flex flex-col md:flex-row px-5 items-center md:items-start lg:px-20 ">
+    <div className="bg-gray-50 mt-10 md:mt-30 flex flex-col lg:flex-row gap-10 px-5 items-center lg:items-start lg:px-20 ">
       <HeroTexts />
       <HeroImage />
     </div>
