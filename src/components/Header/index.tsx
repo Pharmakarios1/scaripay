@@ -2,7 +2,7 @@ import { Button } from "antd";
 import ScaripayLogo from "../../assets/icon.png";
 import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
-import { useResponsive } from "ahooks";
+// import { useResponsive } from "ahooks";
 import { useState } from "react";
 
 const menuItems = [
@@ -14,8 +14,8 @@ const menuItems = [
 ];
 
 const Header = () => {
-  const responsive = useResponsive();
-  const isMobile = responsive.sm === false;
+  // const responsive = useResponsive();
+  // const isMobile = responsive.sm === false;
   const [menuBarOpen, setMenuBarOpen] = useState<boolean>(false);
 
   const handleMobileMenu = () => {
