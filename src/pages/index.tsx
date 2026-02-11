@@ -1,12 +1,11 @@
-import Header from "../components/Header";
+import HomeLayout from "@layouts/HomeLayout";
 import Hero from "../components/Hero";
 
 const Home = () => {
   return (
-    <div className="bg-gray-50">
-      <Header />
+    <HomeLayout>
       <Hero />
-    </div>
+    </HomeLayout>
   );
 };
 

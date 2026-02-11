@@ -24,7 +24,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="h-20 w-full p-5 lg:px-20 sticky top-0 z-5000 grid grid-cols-2 border-b border-gray-100 backdrop-blur-sm">
+      <header className="h-20 w-full p-5 lg:px-20 sticky top-0 z-5000 grid grid-cols-2 border-b border-gray-100 bg-gray-50">
         <div className="flex justify-between h-full items-center gap-5">
           <div className="flex gap-2 ">
             <img src={ScaripayLogo} alt="scaripay-logo" className="h-8 w-8" />
