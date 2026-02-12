@@ -5,7 +5,7 @@ import img2 from "@assets/atm.jpg";
 const WhatScaripayDoes = () => {
   return (
     <div className="bg-white">
-      <h2 className="text-[27px] font-bold mt-20 md:mt30 text-center text-[#444C66]">
+      <h2 className="text-[27px] font-bold mt-20 md:mt-30 pt-10 text-center text-[#444C66]">
         What can you do with Scaripay?
       </h2>
       <div className="grid grid-rotate-2 md:grid-cols-2  gap-5">

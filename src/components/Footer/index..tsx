@@ -1,5 +1,117 @@
+interface FooterLinks {
+  label: string;
+  href: string;
+}
+interface FooterProps {
+  title: string;
+  links: FooterLinks[];
+}
+
 const Footer = () => {
-  return <div>Footer</div>;
+  const footerItems: FooterProps[] = [
+    {
+      title: "Company",
+      links: [
+        {
+          label: "About Us",
+          href: "/about",
+        },
+        {
+          label: "Careers",
+          href: "/careers",
+        },
+        {
+          label: "Press",
+          href: "/press",
+        },
+        {
+          label: "Terms",
+          href: "/terms",
+        },
+        {
+          label: "Privacy",
+          href: "/privacy",
+        },
+      ],
+    },
+    {
+      title: "Products",
+      links: [
+        {
+          label: "Borrow Money, Airtime & Data",
+          href: "/borrow",
+        },
+        {
+          label: "Pay BIlls",
+          href: "/paybills",
+        },
+        {
+          label: "Send / Refill Airtime & Data",
+          href: "/send",
+        },
+        {
+          label: "Ecommerce",
+          href: "/ecommerce",
+        },
+      ],
+    },
+    {
+      title: "Resources",
+      links: [
+        {
+          label: "FAQs",
+          href: "/faqs",
+        },
+        {
+          label: "Help Center",
+          href: "/helpcenter",
+        },
+        {
+          label: "Blog",
+          href: "/blog",
+        },
+      ],
+    },
+    {
+      title: "Contact",
+      links: [
+        {
+          label: "FAQs",
+          href: "/faqs",
+        },
+        {
+          label: "hello@scaripay.com",
+          href: "/hello@scaripay.com",
+        },
+        {
+          label: "+2348060514714",
+          href: "/+2348060514714",
+        },
+      ],
+    },
+  ];
+  return (
+    <footer className="p-5 md:p-30">
+      <div className="container mx-auto grid grid-cols-2 md:grid-cols-4">
+        {footerItems.map((footerItem) => {
+          return (
+            <div>
+              <h4 className="font-semibold text-gray-600">
+                {footerItem.title}
+              </h4>
+              <ul className="space-y-2 text-sm md:text-base">
+                {footerItem.links.map((link, idx) => (
+                  <li key={idx}>
+                    <a href={link.href}>{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

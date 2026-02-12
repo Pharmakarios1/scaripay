@@ -4,7 +4,7 @@ import img3 from "@assets/Rectangle 80.png";
 import img4 from "@assets/Rectangle 81.png";
 const WhyScaripayImage = () => {
   return (
-    <div className="relative grid grid-rows-2 w-full overflow-hidden lg:overflow-visible">
+    <div className="relative grid grid-rows-2 w-full h-auto overflow-hidden lg:overflow-visible">
       <div className="grid grid-cols-2 h-auto">
         <img
           src={img1}
@@ -14,7 +14,7 @@ const WhyScaripayImage = () => {
         <img
           src={img2}
           alt="whyscaripay_images"
-          className="absolute top-0 right-0 md:top-20 lg:top-30 md:w-[60%] lg:w-1/2 lg:right-20 "
+          className="absolute top-0 right-0 md:top-20 lg:top-30 w-[68%] md:w-[60%] lg:w-1/2 lg:right-20 "
         />
       </div>
       <div className="grid grid-cols-2 mt-6 md:mt-2">
