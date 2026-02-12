@@ -1,10 +1,12 @@
 import HomeLayout from "@layouts/HomeLayout";
-import Hero from "../components/Hero";
+import Hero from "./Hero";
+import WhyScaripay from "./WhyScaripay";
 
 const Home = () => {
   return (
     <HomeLayout>
       <Hero />
+      <WhyScaripay />
     </HomeLayout>
   );
 };

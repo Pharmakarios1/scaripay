@@ -10,7 +10,9 @@ const HomeLayout: React.FC<HomepageProps> = ({ children }) => {
   return (
     <>
       <Header />
-      <main className="bg-gray-50  ">{children}</main>
+      <main className="bg-gray-50 py-10 md:py-30 px-5 lg:px-20  ">
+        {children}
+      </main>
       <Footer />
     </>
   );
