@@ -1,9 +1,7 @@
-import img from "@assets/Sign Up_macbookgrey_front 1.png";
-
-const WhatScaripayDoesImage = () => {
+const WhatScaripayDoesImage = ({ img, className }: any) => {
   return (
-    <div className="order-1 md:order-2">
-      <img src={img} alt="whatscaripaydoesimage" />
+    <div className={`${className}`}>
+      <img src={img} className="w-full md:w-1/2" alt="whatscaripaydoesimage" />
     </div>
   );
 };
