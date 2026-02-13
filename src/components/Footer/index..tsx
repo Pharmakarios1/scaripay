@@ -91,15 +91,15 @@ const Footer = () => {
     },
   ];
   return (
-    <footer className="p-5 md:p-30">
-      <div className="container mx-auto grid grid-cols-2 md:grid-cols-4">
+    <footer className="p-5 md:p-30 bg-gray-800 text-white">
+      <div className="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-10">
         {footerItems.map((footerItem) => {
           return (
             <div>
-              <h4 className="font-semibold text-gray-600">
+              <h4 className="font-semibold text-xl text-gray-600  mb-5">
                 {footerItem.title}
               </h4>
-              <ul className="space-y-2 text-sm md:text-base">
+              <ul className="space-y-5 text-sm md:text-base">
                 {footerItem.links.map((link, idx) => (
                   <li key={idx}>
                     <a href={link.href}>{link.label}</a>
@@ -109,6 +109,9 @@ const Footer = () => {
             </div>
           );
         })}
+      </div>
+      <div className="text-center my-10 border-t border-white">
+        <p className="p-5">Copyright 2022 . All Rights reserved</p>
       </div>
     </footer>
   );

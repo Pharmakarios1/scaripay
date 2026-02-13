@@ -14,7 +14,8 @@
       "@utils/*": ["utils/*"],
       "@assets/*": ["assets/*"],
       "@layouts/*": ["layouts/*"],
-      "@store/*": ["store/*"]
+      "@store/*": ["store/*"],
+      "@configs/*": ["configs/*"]
     },
 
     /* Bundler mode */

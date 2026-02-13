@@ -1,26 +1,17 @@
 import { Button } from "antd";
 import ScaripayLogo from "../../assets/icon.png";
-import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
-// import { useResponsive } from "ahooks";
-import { useState } from "react";
-
-const menuItems = [
-  { label: "Product", link: "/product" },
-  { label: "Packages", link: "/packages" },
-  { label: "Bonuses", link: "/bonuses" },
-  { label: "Faq", link: "/faq" },
-  { label: "Blog", link: "/blog" },
-];
+import { menuItems } from "@configs/index";
+import { useUIStore } from "@store/uiStore";
+import { useResponsive } from "ahooks";
+import MobileNav from "./_partials/Mobile";
+import CustomDrawer from "@components/Drawer";
+import { MenuOutlined } from "@ant-design/icons";
 
 const Header = () => {
-  // const responsive = useResponsive();
-  // const isMobile = responsive.sm === false;
-  const [menuBarOpen, setMenuBarOpen] = useState<boolean>(false);
-
-  const handleMobileMenu = () => {
-    setMenuBarOpen((prev: any) => !prev);
-  };
+  const responsive = useResponsive();
+  const isMobile = responsive.sm === false;
+  const toggleMenuBar = useUIStore((s) => s.toggleDrawer);
 
   return (
     <>
@@ -32,6 +23,7 @@ const Header = () => {
               Scaripay
             </p>
           </div>
+          {/* =================DeskTop Menu start======================= */}
           <div className="hidden lg:flex  gap-5 ">
             {menuItems.map((menuItem, idx) => {
               return (
@@ -49,6 +41,7 @@ const Header = () => {
               );
             })}
           </div>
+          {/* =================DeskTop Menu end======================= */}
         </div>
 
         <div className="flex items-center justify-end">
@@ -56,50 +49,36 @@ const Header = () => {
           <Button type="text" className="text-[#173AE5]">
             Sign In
           </Button>
-
-          <div className="md:hidden">
-            {menuBarOpen ? (
-              <Button type="primary">
-                <CloseOutlined size={80} onClick={handleMobileMenu} />
-              </Button>
-            ) : (
-              <Button type="primary">
-                <MenuOutlined size={80} onClick={handleMobileMenu} />
-              </Button>
-            )}
-          </div>
-
           <div className="hidden md:block">
-            <Button
-              type="primary"
-              className="h-10! inline-block!   bg-[#173AE5]!"
-            >
-              Create free Account
+            <Button type="primary" size="large">
+              Create Free Account
             </Button>
           </div>
+
+          {/* ============= Menu Bar on the Mobile================ */}
+          <div className="md:hidden">
+            <Button
+              type="text"
+              size="large"
+              icon={
+                <MenuOutlined
+                  size={80}
+                  onClick={toggleMenuBar}
+                  aria-label="close menu"
+                />
+              }
+            />
+          </div>
+          {isMobile ? (
+            <CustomDrawer>
+              <MobileNav />
+            </CustomDrawer>
+          ) : (
+            ""
+          )}
+          {/* ================================== */}
         </div>
       </header>
-      {menuBarOpen && (
-        <nav
-          className={`flex px-10 py-4 flex-col lg:hidden text-md transition-all duration-300 rounded-md gap-5 bg-blue-300 `}
-        >
-          {menuItems.map((menuItem, idx) => {
-            return (
-              <NavLink
-                to={menuItem.link}
-                key={idx}
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-white border-b border-blue-800 font-black"
-                    : "hover:text-blue-800 "
-                }
-              >
-                {menuItem.label}
-              </NavLink>
-            );
-          })}
-        </nav>
-      )}
     </>
   );
 };
