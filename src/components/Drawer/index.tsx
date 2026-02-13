@@ -13,7 +13,6 @@ const CustomDrawer: React.FC<drawerProps> = ({ children }) => {
       <Drawer open={isDrawerOpen} onClose={closeDrawer} placement="right">
         {children}
       </Drawer>
-      ;
     </>
   );
 };

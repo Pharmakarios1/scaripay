@@ -10,7 +10,7 @@ import { MenuOutlined } from "@ant-design/icons";
 
 const Header = () => {
   const responsive = useResponsive();
-  const isMobile = responsive.sm === false;
+  const isMobile = !responsive.lg;
   const toggleMenuBar = useUIStore((s) => s.toggleDrawer);
 
   return (
@@ -60,23 +60,18 @@ const Header = () => {
             <Button
               type="text"
               size="large"
-              icon={
-                <MenuOutlined
-                  size={80}
-                  onClick={toggleMenuBar}
-                  aria-label="close menu"
-                />
-              }
+              icon={<MenuOutlined />}
+              onClick={toggleMenuBar}
             />
           </div>
-          {isMobile ? (
+
+          {/* ================================== */}
+
+          {isMobile && (
             <CustomDrawer>
               <MobileNav />
             </CustomDrawer>
-          ) : (
-            ""
           )}
-          {/* ================================== */}
         </div>
       </header>
     </>
