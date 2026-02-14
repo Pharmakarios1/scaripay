@@ -91,7 +91,7 @@ const Footer = () => {
     },
   ];
   return (
-    <footer className="p-5 md:p-30 bg-gray-800 text-white">
+    <footer className="p-5 md:p-30  text-[#444C66]">
       <div className="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-10">
         {footerItems.map((footerItem) => {
           return (
