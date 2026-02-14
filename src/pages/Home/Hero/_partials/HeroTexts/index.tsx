@@ -3,7 +3,7 @@ import PhoneField from "@components/PhoneInput";
 const HeroTexts = () => {
   return (
     <div className=" ">
-      <p className="font-bold text-center md:text-start text-[36px] md:text-[46px] text-[#444C66]">
+      <p className="font-bold text-center md:text-start text-[46px] text-[#444C66] leading-12">
         Earn more <span className="text-[#FA7B20]">money</span> <br /> when you{" "}
         <span className="text-blue-700"> pay bills</span>{" "}
       </p>
