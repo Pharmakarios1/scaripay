@@ -1,54 +1,18 @@
 import WhatScaripayDoesImage from "./_partials/Image";
 import WhatScaripayDoesText from "./_partials/Text";
-import img1 from "@assets/Sign Up_macbookgrey_front 1.png";
-import img2 from "@assets/images.jpg";
-import img3 from "@assets/Sign In_ipad_silver_landscape 2.png";
+import img1 from "@assets/Sign Up Page_iphone12prosilver_portrait 1.png";
+
 const WhatScaripayDoes = () => {
   return (
-    <div className="bg-white">
-      <h2 className="text-[27px] font-bold mt-20 md:mt-30 pt-10 text-center text-[#444C66]">
-        What can you do with Scaripay?
-      </h2>
+    <div className="bg-white my-20 py-10">
       <div className="grid grid-rotate-2 md:grid-cols-2  gap-10">
+        <WhatScaripayDoesText
+          className=""
+          title="What can you do 
+with Scaripay?"
+         
+        />
         <WhatScaripayDoesImage img={img1} />
-        <WhatScaripayDoesText
-          className="order-1 md:order-2"
-          title="Send, Refill , Trade Airtime & Data"
-          comment="Send Airtime & Internet Data directly to anyone on their phone number via Scaripay, and you earn commission & Incentives in real time to your Scaripay wallet. Trade your Airtime (Credit) & Data for Cash in real time"
-        />
-      </div>
-      <div className="grid grid-rotate-2 md:grid-cols-2 gap-10">
-        <WhatScaripayDoesImage img={img2} className="order-1 md:order-2 mt-5" />
-        <WhatScaripayDoesText
-          className="order-2 md:order-1"
-          title="Pay Bills"
-          comment="Pay for your Electricity bill, Cable TV subscriptions and Other Services conveniently and securely, and also earn commission instantly to your Scaripay "
-        />
-      </div>
-
-      <div className="grid grid-rotate-2 md:grid-cols-2  gap-10">
-        <WhatScaripayDoesImage img={img3} />
-        <WhatScaripayDoesText
-          className="order-1 md:order-2"
-          title="Borrow Money, Airtime & Data "
-          comment="Don’t run out of funds, Airtime or Internet Data. Access money even when you have no money. "
-        />
-      </div>
-      <div className="grid grid-rotate-2 md:grid-cols-2 gap-10">
-        <WhatScaripayDoesImage img={img3} className="order-1 md:order-2 mt-5" />
-        <WhatScaripayDoesText
-          className="order-2 md:order-1"
-          title="Save and Invest"
-          comment="Don’t run out of funds, Airtime or Internet Data. Access money even when you have no money.  "
-        />
-      </div>
-      <div className="grid grid-rotate-2 md:grid-cols-2 gap-10">
-        <WhatScaripayDoesImage img={img3} className="order-1 md:order-2 mt-5" />
-        <WhatScaripayDoesText
-          className="order-1 md:order-2"
-          title="Send and Receive Money"
-          comment="Don’t run out of funds, Airtime or Internet Data. Access money even when you have no money.  "
-        />
       </div>
     </div>
   );

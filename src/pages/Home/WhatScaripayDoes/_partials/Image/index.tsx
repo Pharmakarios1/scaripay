@@ -1,7 +1,11 @@
-const WhatScaripayDoesImage = ({ img, className }: any) => {
+const WhatScaripayDoesImage = ({ img }: any) => {
   return (
-    <div className={`${className}`}>
-      <img src={img} className="w-full md:w-1/2" alt="whatscaripaydoesimage" />
+    <div className={`grid place-content-center`}>
+      <img
+        src={img}
+        className="w-full md:w-[70%]"
+        alt="whatscaripaydoesimage"
+      />
     </div>
   );
 };

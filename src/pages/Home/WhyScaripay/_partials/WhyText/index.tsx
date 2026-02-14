@@ -3,7 +3,7 @@ import { Button } from "antd";
 const WhyScariText = () => {
   return (
     <div className="flex flex-col items-center md:items-start text-center md:text-start flex-start gap-4 w-full md:max-w-1/2">
-      <p className="h-8 grid place-content-center rounded-xl text-[#FA7B20] w-fit px-4d bg-[#fcece3] ">
+      <p className="h-8 grid place-content-center rounded-xl text-[#FA7B20] w-fit px-4 bg-[#fcece3] ">
         Why Scaripay?
       </p>
       <h2 className="text-[24px] sm:text-[36px] md:text-[48px] font-bold w-full md:leading-14 text-[#444C66]">

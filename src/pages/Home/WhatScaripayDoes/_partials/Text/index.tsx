@@ -1,22 +1,29 @@
-interface TextProps {
-  title: string;
-  comment: string;
-  className: string;
-}
-
-const WhatScaripayDoesText: React.FC<TextProps> = ({
-  title,
-  comment,
-  className,
-}) => {
+const WhatScaripayDoesText = ({}) => {
   return (
-    <div className={`grid place-content-center ${className}`}>
-      <h2 className="text-[20px] md:text-[32px] text-[#1029A2] font-bold">
-        {title}
+    <div className={`grid place-content-center px-5`}>
+      <h2 className="text-[20px] md:text-[32px] text-[#444C66] font-bold mb-10">
+        What can you <br /> do with Scaripay?
       </h2>
-      <p className="text-[#444C66] text-sm md:text-[16px] leading-6">
-        {comment}
-      </p>
+      <div className="shadow-md w-full md:max-w-150 max-h-53 p-8 md:p-15 border border-gray-100 rounded-md">
+        <h4 className="font-semibold text-orange-400">
+          {" "}
+          Airtime & Data Subscription
+        </h4>
+        <p>
+          Send Airtime & Internet Data directly to anyone on their phone number
+          via Scaripay, and you earn commission & Incentives in real time to
+          your Scaripay wallet.
+        </p>
+      </div>
+      {/* <div>
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+        </div> */}
     </div>
   );
 };
