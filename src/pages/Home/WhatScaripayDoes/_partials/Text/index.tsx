@@ -17,7 +17,7 @@ const WhatScaripayDoesText = ({}) => {
       </h2>
       <div className="container shadow-md w-full md:max-w-fit max-h-fit p-5 border border-gray-100 rounded-md">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-full bg-orange-200 gap-2 grid place-content-center">
+          <div className="min-w-8 h-8 rounded-full bg-orange-200 gap-2 grid place-content-center">
             <img src={img1} alt="" className="w-3 h-4" />
           </div>
           <h4 className="font-semibold text-orange-400 my-2">
@@ -33,11 +33,11 @@ const WhatScaripayDoesText = ({}) => {
       <div className="my-5">
         {scaripayFunction.map((scariItem, idx) => (
           <ul key={idx} className="my-2 space-y-10">
-            <li className="flex items-center text-[#444C66] gap-5 pl-5">
-              <div className="w-8 h-8 rounded-full bg-orange-200 gap-2 grid place-content-center">
+            <li className="container flex place-items-center text-[#444C66] gap-5 pl-5">
+              <div className="w-8 h-8 shrink-0 rounded-full bg-orange-200 gap-2 grid place-content-center">
                 <img src={scariItem.icon} alt="" className="w-3 h-4" />
               </div>
-              {scariItem.text}
+              <span className="text-sm md:text-base"> {scariItem.text}</span>
             </li>
           </ul>
         ))}

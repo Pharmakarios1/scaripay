@@ -110,8 +110,10 @@ const Footer = () => {
           );
         })}
       </div>
-      <div className="text-center my-10 border-t border-white">
-        <p className="p-5">Copyright 2022 . All Rights reserved</p>
+      <div className="text-center my-10 border-t border-gray-300">
+        <p className="p-5 text-sm md:text-base">
+          Copyright 2022 . All Rights reserved
+        </p>
       </div>
     </footer>
   );
