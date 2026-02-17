@@ -7,16 +7,13 @@ import { useResponsive } from "ahooks";
 import MobileNav from "./_partials/Mobile";
 import CustomDrawer from "@components/Drawer";
 import { MenuOutlined } from "@ant-design/icons";
+import router from "@utils/router.util";
 
 const Header = () => {
   const responsive = useResponsive();
   const isMobile = !responsive.lg;
   const toggleMenuBar = useUIStore((s) => s.toggleDrawer);
   const navigate = useNavigate();
-
-  const router = ({ route }: { route: string }) => {
-    navigate(route);
-  };
 
   return (
     <>
@@ -58,7 +55,7 @@ const Header = () => {
             <Button
               type="primary"
               size="large"
-              onClick={() => router({ route: "/signup" })}
+              onClick={() => router({ navigate, route: "/signin" })}
             >
               Create Free Account
             </Button>
