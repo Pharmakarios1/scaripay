@@ -7,6 +7,7 @@ import Bonuses from "@pages/Bonuses";
 import Faq from "@pages/Faq";
 import Blog from "@pages/Blog";
 import SignUp from "@pages/Auth/sign-Up";
+import Login from "@pages/Auth/login";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/faq" element={<Faq />} />
       <Route path="/blog" element={<Blog />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/signin" element={<Login />} />
     </Routes>
   );
 }
