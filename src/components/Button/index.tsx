@@ -1,12 +1,19 @@
+import { Button } from "antd";
+
 interface ButtonProps {
   title: string;
   icon?: string;
-  size?: "large" | " medium " | "small";
+  type?: "primary" | "text";
+  size?: "large";
   className?: string;
 }
 
-const Button = ({ title, icon, size, className }: ButtonProps) => {
-  return <Button icon={icon} size={size} className={className} title={title} />;
+const CustomButton = ({ title, icon, size, className, type }: ButtonProps) => {
+  return (
+    <Button icon={icon} size={size} className={className} type={type}>
+      {title}
+    </Button>
+  );
 };
 
-export default Button;
+export default CustomButton;

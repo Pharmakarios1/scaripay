@@ -95,7 +95,7 @@ const Footer = () => {
       <div className="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-10">
         {footerItems.map((footerItem) => {
           return (
-            <div>
+            <div key={footerItem.title}>
               <h4 className="font-semibold text-xl text-gray-600  mb-5">
                 {footerItem.title}
               </h4>

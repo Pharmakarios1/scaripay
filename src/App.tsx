@@ -6,6 +6,7 @@ import Packages from "@pages/Packages";
 import Bonuses from "@pages/Bonuses";
 import Faq from "@pages/Faq";
 import Blog from "@pages/Blog";
+import SignUp from "@pages/Auth/sign-Up";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/bonuses" element={<Bonuses />} />
       <Route path="/faq" element={<Faq />} />
       <Route path="/blog" element={<Blog />} />
+      <Route path="/signup" element={<SignUp />} />
     </Routes>
   );
 }

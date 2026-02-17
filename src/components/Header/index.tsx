@@ -1,6 +1,6 @@
 import { Button } from "antd";
 import ScaripayLogo from "../../assets/icon.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { menuItems } from "@configs/index";
 import { useUIStore } from "@store/uiStore";
 import { useResponsive } from "ahooks";
@@ -12,6 +12,11 @@ const Header = () => {
   const responsive = useResponsive();
   const isMobile = !responsive.lg;
   const toggleMenuBar = useUIStore((s) => s.toggleDrawer);
+  const navigate = useNavigate();
+
+  const router = ({ route }: { route: string }) => {
+    navigate(route);
+  };
 
   return (
     <>
@@ -50,7 +55,11 @@ const Header = () => {
             Sign In
           </Button>
           <div className="hidden md:block">
-            <Button type="primary" size="large">
+            <Button
+              type="primary"
+              size="large"
+              onClick={() => router({ route: "/signup" })}
+            >
               Create Free Account
             </Button>
           </div>

@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const MobileNav = () => {
   return (
     <nav
-      className={`flex px-10 space-y-5 py-10 text-xl flex-col h-full lg:hidden text-md transition-all duration-300 rounded-md gap-5 bg-blue-50 `}
+      className={`flex px-10 space-y-5 py-10 text-xl flex-col h-full lg:hidden text-md transition-all duration-300 rounded-md gap-5 `}
     >
       {menuItems.map((menuItem, idx) => {
         return (
