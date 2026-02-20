@@ -5,7 +5,7 @@ import HeroCTA from "../HeroCTA";
 
 const HeroTexts = () => {
   return (
-    <div className="container space-x-6">
+    <div className="space-x-6 h-full">
       <p className="font-bold text-center md:text-start text-[60px] text-[#444C66] leading-16">
         Earn more <span className="text-[#FA7B20]">money</span> <br /> when you{" "}
         <span className="text-blue-700"> pay bills</span>{" "}
