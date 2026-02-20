@@ -33,7 +33,7 @@ const WhatScaripayDoesText = ({}) => {
       <div className="my-5">
         {scaripayFunction.map((scariItem, idx) => (
           <ul key={idx} className="my-2 space-y-10">
-            <li className="container flex place-items-center text-[#444C66] gap-5 pl-5">
+            <li className="container flex place-items-center text-[#444C66] gap-5 space-y-5 pl-5">
               <div className="w-8 h-8 shrink-0 rounded-full bg-orange-200 gap-2 grid place-content-center">
                 <img src={scariItem.icon} alt="" className="w-3 h-4" />
               </div>
