@@ -1,8 +1,8 @@
 import CustomButton from "@components/Button";
-import InputField from "@components/Input";
 import PhoneField from "@components/PhoneInput";
 import router from "@utils/router.util";
 import { Form } from "antd";
+import Password from "antd/es/input/Password";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -53,11 +53,7 @@ const LoginText = () => {
             { min: 6, message: "Minimum 6 characters" },
           ]}
         >
-          <InputField
-            size="large"
-            type="password"
-            placeholder="Enter password"
-          />
+          <Password size="large" type="password" placeholder="Enter password" />
         </Form.Item>
 
         {/* Submit */}

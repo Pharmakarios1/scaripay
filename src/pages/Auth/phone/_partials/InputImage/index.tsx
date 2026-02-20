@@ -1,4 +1,4 @@
-import signinlogo from "@assets/Left column with image.png";
+import signinlogo from "@assets/phone-validation.png";
 import logo from "@assets/icon.png";
 const LoginImage = () => {
   return (
