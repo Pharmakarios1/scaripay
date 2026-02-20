@@ -48,14 +48,18 @@ const Header = () => {
 
         <div className="flex items-center justify-end">
           <div>EN</div>
-          <Button type="text" className="text-[#173AE5]">
+          <Button
+            type="text"
+            className="text-[#173AE5]"
+            onClick={() => router({ navigate, route: "/signin" })}
+          >
             Sign In
           </Button>
           <div className="hidden md:block">
             <Button
               type="primary"
               size="large"
-              onClick={() => router({ navigate, route: "/signin" })}
+              onClick={() => router({ navigate, route: "/signup" })}
             >
               Create Free Account
             </Button>

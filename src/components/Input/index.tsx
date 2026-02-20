@@ -6,16 +6,27 @@ interface InputProps {
   type?: "email" | "password" | "text";
   size?: "large";
   className?: string;
+  onChange?: () => void;
+  name?: string;
 }
-const CustomInput = ({ size, className, type, placeholder }: InputProps) => {
+const InputField = ({
+  size,
+  className,
+  type,
+  placeholder,
+  onChange,
+  name,
+}: InputProps) => {
   return (
     <Input
       size={size}
       className={className}
       type={type}
+      name={name}
+      onChange={onChange}
       placeholder={placeholder}
     />
   );
 };
 
-export default CustomInput;
+export default InputField;
