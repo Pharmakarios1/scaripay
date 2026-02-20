@@ -3,8 +3,9 @@ import InputField from "@components/Input";
 import PhoneField from "@components/PhoneInput";
 import router from "@utils/router.util";
 import { Form } from "antd";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import Password from "antd/es/input/Password";
+import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 interface FormData {
   phone: string;
@@ -15,6 +16,7 @@ interface FormData {
 
 const SignupText = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [form] = Form.useForm();
   const [inviteCode, setInviteCode] = useState<boolean>(false);
   const [users, setUsers] = useState<FormData[]>([]);
@@ -22,11 +24,19 @@ const SignupText = () => {
   const handleInviteCode = () => {
     setInviteCode((prev) => !prev);
   };
+  useEffect(() => {
+    const invite = searchParams.get("invite");
 
+    if (invite) {
+      form.setFieldsValue({ invitationcode: invite });
+      setInviteCode(true); // show field automatically
+    }
+  }, []);
   const handleSubmit = (values: FormData) => {
     console.log("Submitted:", values);
 
     setUsers((prev) => [...prev, values]);
+    navigate(`/otp?phone=${values.phone}`)
     users.push(values);
     console.log(users);
     form.resetFields();
@@ -75,11 +85,7 @@ const SignupText = () => {
             { min: 6, message: "Minimum 6 characters" },
           ]}
         >
-          <InputField
-            size="large"
-            type="password"
-            placeholder="Enter password"
-          />
+          <Password size="large" type="password" placeholder="Enter password" />
         </Form.Item>
 
         {/* Invite Toggle */}
