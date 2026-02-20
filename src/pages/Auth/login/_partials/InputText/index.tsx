@@ -4,7 +4,7 @@ import router from "@utils/router.util";
 import { Form } from "antd";
 import Password from "antd/es/input/Password";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface FormData {
   phone: string;
@@ -55,7 +55,9 @@ const LoginText = () => {
         >
           <Password size="large" type="password" placeholder="Enter password" />
         </Form.Item>
-
+        <Link className="grid justify-end mb-5" to="/forgot-password">
+          Forgot password?
+        </Link>
         {/* Submit */}
         <Form.Item>
           <CustomButton
