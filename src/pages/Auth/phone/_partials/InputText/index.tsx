@@ -1,29 +1,33 @@
 import CustomButton from "@components/Button";
 
-import { Form, Input } from "antd";
+import { Form, Input, message } from "antd";
 
-import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-interface FormData {
-  phone: string;
-  password: string;
-}
-const LoginText = () => {
+const OTP = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
-  const [users, setUsers] = useState<FormData[]>([]);
+
   const [searchParams] = useSearchParams();
   const phoneTracker = searchParams.get("phone");
 
-  const handleSubmit = (values: FormData) => {
-    console.log("Submitted:", values);
+  const handleFinish = async (values: any) => {
+    if (!phoneTracker) {
+      navigate("/signup");
+      return;
+    }
 
-    setUsers((prev) => [...prev, values]);
-    navigate(`onboarding?phone=${phoneTracker}`);
-    users.push(values);
-    console.log(users);
-    form.resetFields();
+    try {
+      // simulate verification
+      if (values.otp === "1234") {
+        message.success("OTP Verified");
+        navigate("/dashboard");
+      } else {
+        message.error("Invalid OTP");
+      }
+    } catch (error) {
+      message.error("Something went wrong");
+    }
   };
   return (
     <div className="space-y-5  text-gray-600 w-full px-8 md:px-16 mx-auto place-content-center">
@@ -32,25 +36,14 @@ const LoginText = () => {
         Enter the 4-digit we just sent to {phoneTracker} to continue
       </p>
 
-      <Form form={form} layout="vertical" onFinish={handleSubmit} className="">
-        {/* Phone */}
+      <Form form={form} layout="vertical" onFinish={handleFinish}>
+        {/* otp*/}
         <Form.Item
           name="otp"
-          rules={[
-            { required: true, message: "otp is required" },
-            {
-              validator: (_, value) => {
-                if (value && value.length !== 4) {
-                  return Promise.reject("OTP must be 4 digits");
-                }
-                return Promise.resolve();
-              },
-            },
-          ]}
+          rules={[{ required: true, message: "Enter OTP" }]}
         >
-          <Input.OTP length={4} size="large" />
+          <Input.OTP length={4} />
         </Form.Item>
-
         {/* Submit */}
         <Form.Item>
           <CustomButton
@@ -66,4 +59,4 @@ const LoginText = () => {
   );
 };
 
-export default LoginText;
+export default OTP;

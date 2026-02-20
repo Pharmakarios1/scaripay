@@ -9,6 +9,7 @@ import Blog from "@pages/Blog";
 import SignUp from "@pages/Auth/sign-Up";
 import Login from "@pages/Auth/login";
 import PhoneValidation from "@pages/Auth/phone";
+import Dashboard from "@pages/Dashboard";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/signin" element={<Login />} />
       <Route path="/otp" element={<PhoneValidation />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   );
 }
