@@ -4,7 +4,7 @@ const WhatScaripayDoesImage = () => {
     <div className={`grid place-items-center lg:mt-30`}>
       <img
         src={img}
-        className="w-full md:w-[50%] max-h-150"
+        className="w-full h-full object-contain max-h-140"
         alt="whatscaripaydoesimage"
       />
     </div>
