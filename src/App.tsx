@@ -9,6 +9,11 @@ import Blog from "@pages/Blog";
 import SignUp from "@pages/Auth/sign-Up";
 import DashboardLayout from "@layouts/DashboardLayout";
 import { dashboardRoutes } from "./configs";
+import Login from "@pages/Auth/login";
+import PhoneValidation from "@pages/Auth/phone";
+import Dashboard from "@pages/Dashboard";
+import ResetPassword from "@pages/Auth/reset-password/_partials/InputText";
+import ForgotPasswordCOm from "@pages/Auth/forgot-password";
 
 function App() {
   return (
@@ -30,6 +35,11 @@ function App() {
           />
         ))}
       </Route>
+      <Route path="/signin" element={<Login />} />
+      <Route path="/otp" element={<PhoneValidation />} />
+      <Route path="/forgot-password" element={<ForgotPasswordCOm />} />
+      <Route path="/reset-password/:token" element={<ResetPassword />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   );
 }

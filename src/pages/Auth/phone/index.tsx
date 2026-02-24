@@ -2,7 +2,7 @@ import AuthLayout from "@layouts/AuthLayout";
 import SignupText from "./_partials/InputText";
 import SignupImage from "./_partials/InputImage";
 
-const Login = () => {
+const PhoneValidation = () => {
   return (
     <AuthLayout>
       <SignupImage />
@@ -11,4 +11,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default PhoneValidation;

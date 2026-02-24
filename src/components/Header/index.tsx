@@ -8,6 +8,7 @@ import MobileNav from "./_partials/Mobile";
 import CustomDrawer from "@components/Drawer";
 import { MenuOutlined } from "@ant-design/icons";
 import { menuItems } from "@configs/index";
+import router from "@utils/router.util";
 
 const Header = () => {
   const responsive = useResponsive();
@@ -15,22 +16,18 @@ const Header = () => {
   const toggleMenuBar = useUIStore((s) => s.toggleDrawer);
   const navigate = useNavigate();
 
-  const router = ({ route }: { route: string }) => {
-    navigate(route);
-  };
-
   return (
     <>
-      <header className="h-20 w-full p-5 lg:px-20 sticky top-0 z-5000 grid grid-cols-2 border-b border-gray-100 bg-gray-50">
-        <div className="flex justify-between h-full items-center gap-5">
+      <header className="h-20 w-full p-5 lg:px-20 sticky top-0 z-5000 grid grid-cols-2 border-b border-gray-100 bg-gray-50 mx-auto">
+        <div className="flex justify-between h-full items-center gap-10">
           <div className="flex gap-2 ">
             <img src={ScaripayLogo} alt="scaripay-logo" className="h-8 w-8" />
-            <p className="text-[#444C66] font-semibold text-[15px] md:text-[25px]">
+            <p className="text-[#444C66] font-semibold text-[15px] md:text-[20px]">
               Scaripay
             </p>
           </div>
           {/* =================DeskTop Menu start======================= */}
-          <div className="hidden lg:flex  gap-5 ">
+          <div className="hidden md:flex   gap-5 ">
             {menuItems.map((menuItem, idx) => {
               return (
                 <NavLink
@@ -52,14 +49,18 @@ const Header = () => {
 
         <div className="flex items-center justify-end">
           <div>EN</div>
-          <Button type="text" className="text-[#173AE5]">
+          <Button
+            type="text"
+            className="text-[#173AE5]"
+            onClick={() => router({ navigate, route: "/signin" })}
+          >
             Sign In
           </Button>
           <div className="hidden md:block">
             <Button
               type="primary"
               size="large"
-              onClick={() => router({ route: "/signup" })}
+              onClick={() => router({ navigate, route: "/signup" })}
             >
               Create Free Account
             </Button>

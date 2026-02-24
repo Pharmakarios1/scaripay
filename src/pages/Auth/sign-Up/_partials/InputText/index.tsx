@@ -1,16 +1,136 @@
 import CustomButton from "@components/Button";
-import CustomInput from "@components/Input";
+import InputField from "@components/Input";
 import PhoneField from "@components/PhoneInput";
+import router from "@utils/router.util";
+import { Form } from "antd";
+import Password from "antd/es/input/Password";
+import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
+interface FormData {
+  phone: string;
+  email: string;
+  password: string;
+  invitationcode?: string;
+}
 
 const SignupText = () => {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [form] = Form.useForm();
+  const [inviteCode, setInviteCode] = useState<boolean>(false);
+  const [users, setUsers] = useState<FormData[]>([]);
+
+  const handleInviteCode = () => {
+    setInviteCode((prev) => !prev);
+  };
+  useEffect(() => {
+    const invite = searchParams.get("invite");
+
+    if (invite) {
+      form.setFieldsValue({ invitationcode: invite });
+      setInviteCode(true); // show field automatically
+    }
+  }, []);
+  const handleSubmit = (values: FormData) => {
+    console.log("Submitted:", values);
+
+    setUsers((prev) => [...prev, values]);
+    navigate(`/otp?phone=${values.phone}`)
+    users.push(values);
+    console.log(users);
+    form.resetFields();
+  };
+
   return (
-    <div className="space-y-5 my-10 md:my-0">
+    <div className="space-y-5 text-gray-600 w-full px-8 md:px-16 mx-auto place-content-center">
       <h3 className="text-3xl font-bold">Get Started</h3>
       <p className="text-xl">Let’s know you better</p>
-      <PhoneField />
-      <CustomInput />
-      <CustomInput />
-      <CustomButton title="Sign Up" type="primary" size="large" className="w-full!" />
+
+      <Form form={form} layout="vertical" onFinish={handleSubmit}>
+        {/* Phone */}
+        <Form.Item
+          name="phone"
+          rules={[
+            { required: true, message: "Phone number is required" },
+            {
+              validator: (_, value) => {
+                if (value && value.length !== 13) {
+                  return Promise.reject("Phone must be 10 digits ");
+                }
+                return Promise.resolve();
+              },
+            },
+          ]}
+        >
+          <PhoneField />
+        </Form.Item>
+
+        {/* Email */}
+        <Form.Item
+          name="email"
+          rules={[
+            { required: true, message: "Email is required" },
+            { type: "email", message: "Enter a valid email" },
+          ]}
+        >
+          <InputField size="large" type="email" placeholder="Enter Email" />
+        </Form.Item>
+
+        {/* Password */}
+        <Form.Item
+          name="password"
+          rules={[
+            { required: true, message: "Password is required" },
+            { min: 6, message: "Minimum 6 characters" },
+          ]}
+        >
+          <Password size="large" type="password" placeholder="Enter password" />
+        </Form.Item>
+
+        {/* Invite Toggle */}
+        <Form.Item>
+          <span
+            className="text-blue-600 cursor-pointer"
+            onClick={handleInviteCode}
+          >
+            Got an invite code?
+          </span>
+        </Form.Item>
+
+        {/* Invite Code Field */}
+        {inviteCode && (
+          <Form.Item name="invitationcode">
+            <InputField
+              size="large"
+              type="text"
+              placeholder="Enter invite code"
+            />
+          </Form.Item>
+        )}
+
+        {/* Submit */}
+        <Form.Item>
+          <CustomButton
+            title="Sign Up"
+            type="primary"
+            size="large"
+            className="w-full!"
+            htmlType="submit"
+          />
+        </Form.Item>
+
+        {/* Navigation */}
+        <div className="text-center">
+          Got an account?
+          <span
+            className="px-2 cursor-pointer text-blue-600"
+            onClick={() => router({ navigate, route: "/signin" })}
+          >
+            Sign In
+          </span>
+        </div>
+      </Form>
     </div>
   );
 };

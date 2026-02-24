@@ -1,14 +1,14 @@
 import AuthLayout from "@layouts/AuthLayout";
-import SignupText from "./_partials/InputText";
 import SignupImage from "./_partials/InputImage";
+import ForgotPassword from "./_partials/InputText";
 
-const Login = () => {
+const ForgotPasswordCOm = () => {
   return (
     <AuthLayout>
       <SignupImage />
-      <SignupText />
+      <ForgotPassword />
     </AuthLayout>
   );
 };
 
-export default Login;
+export default ForgotPasswordCOm;
