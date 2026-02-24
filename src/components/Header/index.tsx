@@ -1,12 +1,13 @@
 import { Button } from "antd";
 import ScaripayLogo from "../../assets/icon.png";
 import { NavLink, useNavigate } from "react-router-dom";
-import { menuItems } from "@configs/index";
+
 import { useUIStore } from "@store/uiStore";
 import { useResponsive } from "ahooks";
 import MobileNav from "./_partials/Mobile";
 import CustomDrawer from "@components/Drawer";
 import { MenuOutlined } from "@ant-design/icons";
+import { menuItems } from "@configs/index";
 
 const Header = () => {
   const responsive = useResponsive();
@@ -77,7 +78,7 @@ const Header = () => {
           {/* ================================== */}
 
           {isMobile && (
-            <CustomDrawer>
+            <CustomDrawer placement="right">
               <MobileNav />
             </CustomDrawer>
           )}
