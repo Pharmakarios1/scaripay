@@ -1,11 +1,11 @@
 import CustomButton from "@components/Button";
-import { Card, Row, Col, Typography, Divider } from "antd";
+import { Card, Row, Col, Divider } from "antd";
 
 //images
 import GraphOnEmtystate from "@assets/graph.png";
 
 const DashboardHome = () => {
-  const { Text } = Typography;
+  
   return (
     <div className="">
       <Row gutter={[16, 16]}>
@@ -36,7 +36,7 @@ const DashboardHome = () => {
             </div>
           </Card>
         </Col>
-        <Divider orientation="vertical" className="md:h-35!" size={34} />
+        <Divider orientation="vertical" className="md:h-35!" />
         <Col xs={24} md={11}>
           <Card className="h-35! bg-gray-100! border-0">
             <div className="flex flex-col h-full ">
