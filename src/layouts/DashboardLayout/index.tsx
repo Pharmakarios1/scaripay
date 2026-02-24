@@ -24,7 +24,7 @@ const DashboardLayout = () => {
           <TopBar />
         </Header>
 
-        <Content className="m-6 p-6 bg-gray-100 rounded-lg">
+        <Content className="m-6 bg-gray- rounded-lg">
           <Outlet />
         </Content>
       </Layout>

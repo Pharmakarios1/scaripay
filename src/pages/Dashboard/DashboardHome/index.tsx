@@ -1,5 +1,5 @@
 import CustomButton from "@components/Button";
-import { Card, Row, Col, Typography } from "antd";
+import { Card, Row, Col, Typography, Divider } from "antd";
 
 //images
 import GraphOnEmtystate from "@assets/graph.png";
@@ -7,20 +7,20 @@ import GraphOnEmtystate from "@assets/graph.png";
 const DashboardHome = () => {
   const { Text } = Typography;
   return (
-    <div>
+    <div className="">
       <Row gutter={[16, 16]}>
         <Col xs={24} md={12}>
           <Card className="h-35! bg-[#FFF8F4]!">
             <div className="flex  items-center justify-between gap-4 h-full">
-              <div className="text-center w-1/2 h-full p-2">
-                <Text className="text-[#FA7B20]! text-xl! font-semibold!">
+              <div className="md:text-center w-1/2 h-full ">
+                <h4 className="text-[#FA7B20]! text-base! md:text-xl! font-semibold!">
                   Total Balance
-                </Text>
+                </h4>
 
                 <div className="flex gap-3 items-center">
                   <p className="text-xl">Ar</p>
                   <p className="text-gray-600">
-                    <span className="text-5xl font-semibold">0</span>: 00
+                    <span className="text-2xl sm:text-5xl font-semibold">0</span>: 00
                   </p>
                 </div>
               </div>
@@ -30,17 +30,17 @@ const DashboardHome = () => {
                   title="Add Money"
                   type="primary"
                   size="large"
-                  className="text-white text-xl  "
+                  className="text-white  text-xl  "
                 />
               </div>
             </div>
           </Card>
         </Col>
-        {/* <Divider orientation="vertical" /> */}
-        <Col xs={24} md={12}>
+        <Divider orientation="vertical" className="md:h-35!" size={34} />
+        <Col xs={24} md={11}>
           <Card className="h-35! bg-gray-100! border-0">
             <div className="flex flex-col h-full ">
-              <p className="text-xl text-[#757A89] font-normal mb-2">
+              <p className="text-sm sm:text-xl text-[#757A89] font-normal mb-2">
                 Measure your earnings at a glance
               </p>
               <div className="h-20 w-full">
