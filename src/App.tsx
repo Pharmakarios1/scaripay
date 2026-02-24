@@ -7,6 +7,8 @@ import Bonuses from "@pages/Bonuses";
 import Faq from "@pages/Faq";
 import Blog from "@pages/Blog";
 import SignUp from "@pages/Auth/sign-Up";
+import DashboardLayout from "@layouts/DashboardLayout";
+import { dashboardRoutes } from "./configs";
 import Login from "@pages/Auth/login";
 import PhoneValidation from "@pages/Auth/phone";
 import Dashboard from "@pages/Dashboard";
@@ -23,6 +25,16 @@ function App() {
       <Route path="/faq" element={<Faq />} />
       <Route path="/blog" element={<Blog />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/dashboard" element={<DashboardLayout />}>
+        {dashboardRoutes.map((route) => (
+          <Route
+            key={route.path}
+            index={route.path === ""}
+            path={route.path}
+            element={route.element}
+          />
+        ))}
+      </Route>
       <Route path="/signin" element={<Login />} />
       <Route path="/otp" element={<PhoneValidation />} />
       <Route path="/forgot-password" element={<ForgotPasswordCOm />} />
