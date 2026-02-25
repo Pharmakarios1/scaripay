@@ -8,8 +8,45 @@ import commission from "@assets/commision icon.png";
 import GiftIcon from "@assets/Gift Icon.png";
 
 // zustand state
+import { useWalletStore } from "@store/WalletStore";
+import { useTransactionStore } from "@store/transactionStore";
+import { mockApi } from "@services/mockApi";
+import { useEffect } from "react";
+import TransactionTable from "@components/Table";
+import RecentActivities from "./RecentActivities";
 
 const DashboardHome = () => {
+  const balance = useWalletStore((state) => state.balance);
+  const commissionPoints = useWalletStore((state) => state.commissionPoints);
+  const setWallet = useWalletStore((state) => state.setWallet);
+
+  
+  const setTransactions = useTransactionStore((state) => state.setTransactions);
+
+  useEffect(() => {
+    const load = async () => {
+      const res = await mockApi.getWallet();
+
+      setWallet(res.balance, res.commissionPoints);
+      setTransactions(res.transactions);
+    };
+
+    load();
+  }, []);
+  const handleDeposit = async () => {
+    try {
+      console.log("Deposit clicked");
+
+      const res = await mockApi.deposit(1000);
+
+      console.log("API response:", res);
+
+      setWallet(res.balance, res.commissionPoints);
+      setTransactions(res.transactions);
+    } catch (err) {
+      console.error("Deposit error:", err);
+    }
+  };
   return (
     <div className="space-y-10">
       <Row gutter={[16, 16]}>
@@ -25,7 +62,7 @@ const DashboardHome = () => {
                   <p className="text-xl">Ar</p>
                   <p className="text-gray-600">
                     <span className="text-2xl sm:text-5xl font-semibold">
-                      0
+                      {balance}
                     </span>
                     : 00
                   </p>
@@ -38,6 +75,7 @@ const DashboardHome = () => {
                   type="primary"
                   size="large"
                   className="text-white  text-xl  "
+                  onClick={handleDeposit}
                 />
               </div>
             </div>
@@ -88,8 +126,10 @@ const DashboardHome = () => {
             <div className="flex gap-3 items-center">
               <p className="text-xl">Ar</p>
               <p className="text-gray-600">
-                <span className="text-2xl sm:text-5xl font-semibold">0</span>:
-                00
+                <span className="text-2xl sm:text-5xl font-semibold">
+                  {commissionPoints}
+                </span>
+                : 00
               </p>
             </div>
           </Card>
@@ -108,10 +148,13 @@ const DashboardHome = () => {
       </Row>
       <Row gutter={[16, 16]}>
         <Col xs={24} md={12}>
-          <Card className="h-35! bg-[#FFF8F4]!">recent acitvities</Card>
+          <div className="my-5 text-[#babcc4]">Latest Transactions</div>
+
+          <TransactionTable />
         </Col>
         <Col xs={24} md={12}>
-          <Card className="h-35! bg-[#FFF8F4]!">latest transactions</Card>
+          <div className="my-5 text-[#babcc4]">Recent Activities</div>
+          <RecentActivities />
         </Col>
       </Row>
     </div>
