@@ -7,7 +7,7 @@ interface DashboardState {
 
   addMoney: (amount: number) => void;
   deductMoney: (amount: number) => void;
-  addCommission: (points: number) => number;
+  addCommission: (points: number) => void;
   resetDashboard: () => void;
 }
 
