@@ -7,13 +7,14 @@ interface DashboardState {
 
   addMoney: (amount: number) => void;
   deductMoney: (amount: number) => void;
-  addCommission: (points: number) => void;
+  addCommission: (points: number) => number;
   resetDashboard: () => void;
 }
 
 export const useDashboardStore = create<DashboardState>((set) => ({
-  balance: 0,
-  commissionPoints: 0,
+  balance: 5000,
+  commissionPoints: 20,
+  totalPointValue: 30,
 
   addMoney: (amount) =>
     set((state) => ({
