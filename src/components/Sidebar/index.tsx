@@ -1,4 +1,4 @@
-import logo from "@assets/icon.png";
+import Logo from "@components/Logo";
 import { dashboardRoutes } from "@configs/index";
 import { Menu } from "antd";
 
@@ -9,16 +9,10 @@ const Sidebar = () => {
   const location = useLocation();
 
   return (
-    <div className="flex flex-col items-start md:items-center my-5 space-y-10">
-      <div className="flex gap-2">
-        {" "}
-        <img src={logo} alt="" />
-        <p className="text-[25px]">Scaripay</p>
-      </div>
-      <div className="border border-gray-200 px-5 py-2 rounded-md">
-        <h4 className="font-bold text-gray-600 text-md">
-          Howdy folaranmi,
-        </h4>
+    <div className="flex flex-col items-start md:items-center my-3 space-y-10">
+      <Logo />
+      <div className="border border-gray-200 px-5 py-2 rounded-md w-full md:max-w-45 mx-auto">
+        <h4 className="font-bold text-gray-600 text-md">Howdy folaranmi,</h4>
         <p>@ Basic Package</p>
       </div>
       <div>
