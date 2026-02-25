@@ -30,7 +30,7 @@ const OTP = () => {
     }
   };
   return (
-    <div className="space-y-7  text-gray-600 w-full px-8 md:px-16 mx-auto place-content-center">
+    <div className="space-y-7  text-gray-600 w-full px-8 md:px-16 mx-auto place-content-center mt-[20%] md:mt-0">
       <h3 className="text-3xl font-bold ">Check your phone</h3>
       <p className="text-md">
         Enter the 4-digit we just sent to {phoneTracker} to continue

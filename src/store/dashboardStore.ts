@@ -12,8 +12,9 @@ interface DashboardState {
 }
 
 export const useDashboardStore = create<DashboardState>((set) => ({
-  balance: 0,
-  commissionPoints: 0,
+  balance: 5000,
+  commissionPoints: 20,
+  totalPointValue: 30,
 
   addMoney: (amount) =>
     set((state) => ({

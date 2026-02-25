@@ -23,7 +23,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="space-y-5  text-gray-600 w-full px-8 md:px-16 mx-auto place-content-center">
+    <div className="space-y-5  text-gray-600 w-full px-8 md:px-16 mx-auto place-content-center mt-[20%] md:mt-0">
       <h3 className="text-3xl font-bold ">Forgot your password?</h3>
       <p className="text-md">
         Enter your email and we’ll send you a reset link.

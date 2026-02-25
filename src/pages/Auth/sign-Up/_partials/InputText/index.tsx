@@ -36,14 +36,14 @@ const SignupText = () => {
     console.log("Submitted:", values);
 
     setUsers((prev) => [...prev, values]);
-    navigate(`/otp?phone=${values.phone}`)
+    navigate(`/otp?phone=${values.phone}`);
     users.push(values);
     console.log(users);
     form.resetFields();
   };
 
   return (
-    <div className="space-y-5 text-gray-600 w-full px-8 md:px-16 mx-auto place-content-center">
+    <div className="space-y-5 text-gray-600 w-full px-8 md:px-16 mx-auto place-content-center mt-[20%] md:mt-0">
       <h3 className="text-3xl font-bold">Get Started</h3>
       <p className="text-xl">Let’s know you better</p>
 

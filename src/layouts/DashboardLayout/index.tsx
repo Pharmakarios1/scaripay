@@ -1,7 +1,7 @@
 import { Layout } from "antd";
 import { Outlet } from "react-router-dom";
 import Sidebar from "@components/Sidebar";
-import TopBar from "@components/TopBar";
+import TopBar from "@components/Topbar";
 import { useResponsive } from "ahooks";
 const { Sider, Header, Content } = Layout;
 
