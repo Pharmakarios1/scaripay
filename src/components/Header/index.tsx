@@ -1,31 +1,34 @@
 import { Button } from "antd";
-import ScaripayLogo from "../../assets/icon.png";
+
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { useUIStore } from "@store/uiStore";
 import { useResponsive } from "ahooks";
 import MobileNav from "./_partials/Mobile";
 import CustomDrawer from "@components/Drawer";
-import { MenuOutlined } from "@ant-design/icons";
+import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
 import { menuItems } from "@configs/index";
 import router from "@utils/router.util";
+import Logo from "@components/Logo";
+import { useState } from "react";
 
 const Header = () => {
   const responsive = useResponsive();
   const isMobile = !responsive.lg;
   const toggleMenuBar = useUIStore((s) => s.toggleDrawer);
   const navigate = useNavigate();
+  const [isMobiemenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+
+  const handleMobileMenuClick = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+    toggleMenuBar();
+  };
 
   return (
     <>
       <header className="h-20 w-full p-5 lg:px-20 sticky top-0 z-5000 grid grid-cols-2 border-b border-gray-100 bg-gray-50 mx-auto">
         <div className="flex justify-between h-full items-center gap-10">
-          <div className="flex gap-2 ">
-            <img src={ScaripayLogo} alt="scaripay-logo" className="h-8 w-8" />
-            <p className="text-[#444C66] font-semibold text-[15px] md:text-[20px]">
-              Scaripay
-            </p>
-          </div>
+          <Logo />
           {/* =================DeskTop Menu start======================= */}
           <div className="hidden md:flex   gap-5 ">
             {menuItems.map((menuItem, idx) => {
@@ -67,14 +70,14 @@ const Header = () => {
           </div>
 
           {/* ============= Menu Bar on the Mobile================ */}
-          <div className="md:hidden">
-            <Button
-              type="text"
-              size="large"
-              icon={<MenuOutlined />}
-              onClick={toggleMenuBar}
-            />
-          </div>
+          <Button
+            size="large"
+            type="text"
+            className="md:hidden!"
+            onClick={handleMobileMenuClick}
+          >
+            {isMobiemenuOpen ? <CloseOutlined /> : <MenuOutlined />}
+          </Button>
 
           {/* ================================== */}
 

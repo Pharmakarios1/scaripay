@@ -30,7 +30,7 @@ const OTP = () => {
     }
   };
   return (
-    <div className="space-y-5  text-gray-600 w-full px-8 md:px-16 mx-auto place-content-center">
+    <div className="space-y-7  text-gray-600 w-full px-8 md:px-16 mx-auto place-content-center">
       <h3 className="text-3xl font-bold ">Check your phone</h3>
       <p className="text-md">
         Enter the 4-digit we just sent to {phoneTracker} to continue
@@ -42,7 +42,7 @@ const OTP = () => {
           name="otp"
           rules={[{ required: true, message: "Enter OTP" }]}
         >
-          <Input.OTP length={4} />
+          <Input.OTP length={4} separator={<span>-</span>} />
         </Form.Item>
         {/* Submit */}
         <Form.Item>

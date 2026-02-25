@@ -20,20 +20,25 @@ const HeroTexts = () => {
           href="https://play.google.com/store/apps/details?id=com.scaripay"
           target="_blank"
           rel="noopener noreferrer"
-          className="col-span-4"
+          className="col-span-3 md:col-span-4"
         >
           <img src={Google} alt="Googledownload" className="h-8 " />
         </a>
-        <a
-          href="https://apps.apple.com/app/id1234567890"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="col-span-1"
-        >
-          <img src={Apple} alt="appledownload" className="h-8 " />
-        </a>
+        <span className="col-span-2 flex items-center gap-1.5">
+          <a
+            href="https://apps.apple.com/app/id1234567890"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={Apple}
+              alt="appledownload"
+              className="h-8 shrink-0 max-w-xl"
+            />
+          </a>
 
-        <img src={Ussd} alt="ussd" className="col-span-1" />
+          <img src={Ussd} alt="ussd" className="w-16" />
+        </span>
       </div>
     </div>
   );
