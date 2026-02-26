@@ -25,6 +25,7 @@ export const register = async (
     commissionPoint: 0,
     transactions: [],
     activities: [],
+    chart: [],
   };
 
   saveDB(db);

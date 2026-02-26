@@ -19,6 +19,7 @@ interface FormData {
 const SignupForm = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  //form
   const [form] = Form.useForm();
   const [inviteCode, setInviteCode] = useState(false);
 
@@ -63,17 +64,7 @@ const SignupForm = () => {
         {/* Phone */}
         <Form.Item
           name="phone"
-          rules={[
-            { required: true, message: "Phone number is required" },
-            {
-              validator: (_, value) => {
-                if (value && value.length !== 13) {
-                  return Promise.reject("Phone must be 10 digits ");
-                }
-                return Promise.resolve();
-              },
-            },
-          ]}
+          rules={[{ required: true, message: "Phone number is required" }]}
         >
           <PhoneField />
         </Form.Item>
