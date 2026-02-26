@@ -9,7 +9,5 @@ export const sendOTP = async (phone: string) => {
 
   saveDB(db);
 
-  console.log("Mock OTP:", otp); // simulate SMS
-
-  return true;
+  return otp;
 };

@@ -46,27 +46,6 @@ export const saveDB = (db: MockDB) => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Forgot password and reset
 type ResetToken = {
   email: string;
@@ -113,28 +92,20 @@ export const forgotPasswordApi = async (email: string) => {
 
 // Reset password
 
-
 const USERS_KEY = "mock_users";
 
-
-const getUsers = () =>
-  JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
+const getUsers = () => JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
 
 const saveUsers = (users: any[]) =>
   localStorage.setItem(USERS_KEY, JSON.stringify(users));
 
-
-
-export const resetPasswordApi = async (
-  token: string,
-  newPassword: string
-) => {
+export const resetPasswordApi = async (token: string, newPassword: string) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const tokens = getResetTokens();
 
   const record = tokens.find(
-    (t: any) => t.token === token && t.expires > Date.now()
+    (t: any) => t.token === token && t.expires > Date.now(),
   );
 
   if (!record) {
@@ -143,9 +114,7 @@ export const resetPasswordApi = async (
 
   const users = getUsers();
 
-  const userIndex = users.findIndex(
-    (u: any) => u.email === record.email
-  );
+  const userIndex = users.findIndex((u: any) => u.email === record.email);
 
   if (userIndex === -1) {
     throw new Error("User not found");
