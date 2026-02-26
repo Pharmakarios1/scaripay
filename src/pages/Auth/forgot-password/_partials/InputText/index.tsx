@@ -1,3 +1,4 @@
+import { forgotPasswordApi } from "@services/mockApi";
 import { Form, Input, Button, message } from "antd";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -10,43 +11,44 @@ const ForgotPassword = () => {
     try {
       setLoading(true);
 
-      // 🔁 Replace with your real API call
-      // await fakeForgotPassword(values.email);
-      console.log(values);
+      await forgotPasswordApi(values.email);
+
+      message.success("Reset link sent");
 
       setSent(true);
     } catch (error) {
-      message.error("Something went wrong. Try again.");
+      message.error("Something went wrong");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="space-y-5  text-gray-600 w-full px-8 md:px-16 mx-auto place-content-center mt-[20%] md:mt-0">
-      <h3 className="text-3xl font-bold ">Forgot your password?</h3>
+    <div className="space-y-5 text-gray-600 w-full px-8 md:px-16 mx-auto place-content-center mt-[20%] md:mt-0">
+      <h3 className="text-3xl font-bold">Forgot your password?</h3>
+
       <p className="text-md">
         Enter your email and we’ll send you a reset link.
       </p>
 
       {!sent ? (
-        <Form layout="vertical" onFinish={onFinish} className="mt-6">
+        <Form layout="vertical" onFinish={onFinish}>
           <Form.Item
             label="Email"
             name="email"
             rules={[
-              { required: true, message: "Please enter your email" },
-              { type: "email", message: "Enter a valid email" },
+              { required: true, message: "Enter your email" },
+              { type: "email", message: "Invalid email" },
             ]}
           >
-            <Input placeholder="example@email.com" size="large" />
+            <Input size="large" />
           </Form.Item>
 
           <Button
             type="primary"
             htmlType="submit"
-            block
             loading={loading}
+            block
             size="large"
           >
             Send Reset Link
@@ -57,11 +59,12 @@ const ForgotPassword = () => {
           </div>
         </Form>
       ) : (
-        <div className="mt-6">
-          <p>If an account exists with this email, we’ve sent a reset link.</p>
-          <div className="mt-4">
-            <Link to="/login">Return to Login</Link>
-          </div>
+        <div>
+          <p className="text-green-600">
+            If the email exists, reset instructions were sent.
+          </p>
+
+          <Link to="/login">Return to login</Link>
         </div>
       )}
     </div>

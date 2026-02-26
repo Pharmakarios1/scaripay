@@ -1,26 +1,36 @@
+import { Link, useNavigate } from "react-router-dom";
+// components
 import CustomButton from "@components/Button";
 import PhoneField from "@components/PhoneInput";
 import router from "@utils/router.util";
-import { Form } from "antd";
+import { Form, message } from "antd";
 import Password from "antd/es/input/Password";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { login } from "@api/login";
+import { useAuthStore } from "@store/AuthStore";
+//api and state
 
 interface FormData {
   phone: string;
   password: string;
 }
-const LoginText = () => {
+const LoginForm = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
-  const [users, setUsers] = useState<FormData[]>([]);
-  const handleSubmit = (values: FormData) => {
-    console.log("Submitted:", values);
 
-    setUsers((prev) => [...prev, values]);
-    users.push(values);
-    console.log(users);
-    form.resetFields();
+  const handleSubmit = async (values: FormData) => {
+    try {
+      const user = await login(values.phone, values.password);
+
+      useAuthStore.getState().setUser(user);
+
+      message.success("Login successful");
+
+      navigate("/dashboard");
+
+      form.resetFields();
+    } catch (error: any) {
+      message.error(error.message || "Invalid phone or password");
+    }
   };
   return (
     <div className="space-y-5  text-gray-600 w-full px-8 md:px-16 mx-auto place-content-center mt-[20%] md:mt-0">
@@ -83,4 +93,4 @@ const LoginText = () => {
   );
 };
 
-export default LoginText;
+export default LoginForm;

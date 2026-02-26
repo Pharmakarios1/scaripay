@@ -10,10 +10,11 @@ import SignUp from "@pages/Auth/sign-Up";
 import DashboardLayout from "@layouts/DashboardLayout";
 import { dashboardRoutes } from "./configs";
 import Login from "@pages/Auth/login";
-import PhoneValidation from "@pages/Auth/phone";
-import Dashboard from "@pages/Dashboard";
+import PhoneValidation from "@pages/Auth/Otp";
+
 import ResetPassword from "@pages/Auth/reset-password/_partials/InputText";
 import ForgotPasswordCOm from "@pages/Auth/forgot-password";
+import ProtectedRoute from "@components/ProtectRoute";
 
 function App() {
   return (
@@ -24,8 +25,14 @@ function App() {
       <Route path="/bonuses" element={<Bonuses />} />
       <Route path="/faq" element={<Faq />} />
       <Route path="/blog" element={<Blog />} />
-      <Route path="/signup" element={<SignUp />} />
-      <Route path="/dashboard" element={<DashboardLayout />}>
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout />
+          </ProtectedRoute>
+        }
+      >
         {dashboardRoutes.map((route) => (
           <Route
             key={route.path}
@@ -35,11 +42,11 @@ function App() {
           />
         ))}
       </Route>
+      <Route path="/signup" element={<SignUp />} />
       <Route path="/signin" element={<Login />} />
       <Route path="/otp" element={<PhoneValidation />} />
       <Route path="/forgot-password" element={<ForgotPasswordCOm />} />
       <Route path="/reset-password/:token" element={<ResetPassword />} />
-      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   );
 }

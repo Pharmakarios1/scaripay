@@ -2,7 +2,7 @@ import AuthLayout from "@layouts/AuthLayout";
 import SignupText from "./_partials/InputText";
 import SignupImage from "./_partials/InputImage";
 
-const PhoneValidation = () => {
+const Otp = () => {
   return (
     <AuthLayout>
       <SignupImage />
@@ -11,4 +11,4 @@ const PhoneValidation = () => {
   );
 };
 
-export default PhoneValidation;
+export default Otp;

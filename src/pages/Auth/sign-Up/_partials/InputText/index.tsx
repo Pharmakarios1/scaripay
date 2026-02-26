@@ -1,3 +1,5 @@
+import { register } from "@api/register";
+import { sendOTP } from "@api/sendOtp";
 import CustomButton from "@components/Button";
 import InputField from "@components/Input";
 import PhoneField from "@components/PhoneInput";
@@ -11,35 +13,45 @@ interface FormData {
   phone: string;
   email: string;
   password: string;
-  invitationcode?: string;
+  referralcode?: string;
 }
 
-const SignupText = () => {
+const SignupForm = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [form] = Form.useForm();
-  const [inviteCode, setInviteCode] = useState<boolean>(false);
-  const [users, setUsers] = useState<FormData[]>([]);
+  const [inviteCode, setInviteCode] = useState(false);
 
   const handleInviteCode = () => {
     setInviteCode((prev) => !prev);
   };
+
   useEffect(() => {
     const invite = searchParams.get("invite");
 
     if (invite) {
-      form.setFieldsValue({ invitationcode: invite });
-      setInviteCode(true); // show field automatically
+      form.setFieldsValue({ referralcode: invite });
+      setInviteCode(true);
     }
   }, []);
-  const handleSubmit = (values: FormData) => {
-    console.log("Submitted:", values);
 
-    setUsers((prev) => [...prev, values]);
-    navigate(`/otp?phone=${values.phone}`);
-    users.push(values);
-    console.log(users);
-    form.resetFields();
+  const handleSubmit = async (values: FormData) => {
+    try {
+      await register(
+        values.phone,
+        values.email,
+        values.password,
+        values.referralcode,
+      );
+
+      await sendOTP(values.phone);
+
+      navigate(`/otp?phone=${encodeURIComponent(values.phone)}`);
+
+      form.resetFields();
+    } catch (error: any) {
+      console.error(error.message);
+    }
   };
 
   return (
@@ -100,7 +112,7 @@ const SignupText = () => {
 
         {/* Invite Code Field */}
         {inviteCode && (
-          <Form.Item name="invitationcode">
+          <Form.Item name="referralcode">
             <InputField
               size="large"
               type="text"
@@ -135,4 +147,4 @@ const SignupText = () => {
   );
 };
 
-export default SignupText;
+export default SignupForm;
