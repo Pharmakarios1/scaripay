@@ -10,14 +10,13 @@ import LogoutButton from "@pages/Auth/logout";
 //api and state
 import { useResponsive } from "ahooks";
 import { useUIStore } from "@store/uiStore";
-
+import UserIndex from "@pages/User";
 
 const TopBar = () => {
   const [open, setOpen] = useState<boolean>(false);
   const toggleDrawer = useUIStore((s) => s.toggleDrawer);
   const mobile = useResponsive();
   const isMobile = !mobile.lg;
-  const userActions = [<LogoutButton />];
 
   return (
     <>
@@ -41,15 +40,9 @@ const TopBar = () => {
         </div>
       </div>
       {open && (
-        <Card className="absolute! top-12! right-2! w-30! h-40!  z-10!">
-          <div className="space-y-5">
-            {userActions.map((user, index) => (
-              <li key={index} className="py-1 cursor-pointer rounded-md">
-                {user}
-              </li>
-            ))}
-          </div>
-        </Card>
+        <div className="absolute! top-8! right-1! z-10!">
+          <UserIndex />
+        </div>
       )}
       <CustomDrawer placement="left">
         <Sidebar />

@@ -54,13 +54,13 @@ const Header = () => {
           {/* =================DeskTop Menu end======================= */}
         </div>
 
-        <div className="flex items-center justify-end gap-4">
+        <div className="flex items-center justify-end gap-1">
           <div>EN</div>
           {!user ? (
             <div className="flex items-center justify-end">
               {" "}
               <Button
-                type="text"
+                type="primary"
                 className="text-[#173AE5]"
                 onClick={() => router({ navigate, route: "/signin" })}
               >
@@ -79,6 +79,7 @@ const Header = () => {
           ) : (
             <CustomButton
               title="Logout"
+              className="bg-orange-400! text-white!"
               onClick={() => {
                 logout();
                 router({ navigate, route: "/signin" });
