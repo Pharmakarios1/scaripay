@@ -1,39 +1,62 @@
-// store/dashboardStore.ts
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 interface DashboardState {
-  balance: number;
-  commissionPoints: number;
+  walletBalance: number;
+  totalPointValue: number;
+  commissionPoint: number;
 
+  transactions: any[];
+  activities: any[];
+  chart: any[];
+
+  loading: boolean;
+
+  setDashboard: (data: any) => void;
   addMoney: (amount: number) => void;
-  deductMoney: (amount: number) => void;
-  addCommission: (points: number) => void;
-  resetDashboard: () => void;
+
+  reset: () => void;
 }
 
-export const useDashboardStore = create<DashboardState>((set) => ({
-  balance: 5000,
-  commissionPoints: 20,
-  totalPointValue: 30,
+const initialState = {
+  walletBalance: 0,
+  totalPointValue: 0,
+  commissionPoint: 0,
 
-  addMoney: (amount) =>
-    set((state) => ({
-      balance: state.balance + amount,
-    })),
+  transactions: [],
+  activities: [],
+  chart: [],
 
-  deductMoney: (amount) =>
-    set((state) => ({
-      balance: state.balance - amount,
-    })),
+  loading: false,
+};
 
-  addCommission: (points) =>
-    set((state) => ({
-      commissionPoints: state.commissionPoints + points,
-    })),
+const useDashboardStore = create<DashboardState>()(
+  persist(
+    (set) => ({
+      ...initialState,
 
-  resetDashboard: () =>
-    set({
-      balance: 0,
-      commissionPoints: 0,
+      setDashboard: (data) =>
+        set({
+          walletBalance: data.walletBalance,
+          totalPointValue: data.totalPointValue,
+          commissionPoint: data.commissionPoint,
+
+          transactions: data.transactions,
+          activities: data.activities,
+          chart: data.chart,
+        }),
+
+      addMoney: (amount) =>
+        set((state) => ({
+          walletBalance: state.walletBalance + amount,
+        })),
+
+      reset: () => set(initialState),
     }),
-}));
+    {
+      name: "dashboard-storage",
+    },
+  ),
+);
+
+export default useDashboardStore;

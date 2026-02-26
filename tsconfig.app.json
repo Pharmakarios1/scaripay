@@ -17,6 +17,7 @@
       "@layouts/*": ["layouts/*"],
       "@store/*": ["store/*"],
       "@services/*": ["services/*"],
+      "@api/*": ["api/*"],
       "@configs/*": ["configs/*"]
     },
 

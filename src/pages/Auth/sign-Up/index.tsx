@@ -1,12 +1,12 @@
 import AuthLayout from "@layouts/AuthLayout";
-import SignupText from "./_partials/InputText";
 import SignupImage from "./_partials/InputImage";
+import SignupForm from "./_partials/InputText";
 
 const SignUp = () => {
   return (
     <AuthLayout>
       <SignupImage />
-      <SignupText />
+      <SignupForm />
     </AuthLayout>
   );
 };

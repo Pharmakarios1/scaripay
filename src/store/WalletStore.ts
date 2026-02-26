@@ -1,4 +1,4 @@
-// store/walletStore.ts
+
 import { create } from "zustand";
 
 interface WalletState {

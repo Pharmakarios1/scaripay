@@ -1,4 +1,4 @@
-// store/transactionStore.ts
+
 import { create } from "zustand";
 
 export interface Transaction {

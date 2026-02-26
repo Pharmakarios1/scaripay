@@ -1,52 +1,23 @@
 import CustomButton from "@components/Button";
+import TransactionTable from "@components/Table";
+import RecentActivities from "./RecentActivities";
 import { Card, Row, Col, Divider } from "antd";
 
 //images
-import GraphOnEmtystate from "@assets/graph.png";
+// import GraphOnEmtystate from "@assets/graph.png";
 import pointValue from "@assets/point value.png";
 import commission from "@assets/commision icon.png";
 import GiftIcon from "@assets/Gift Icon.png";
-
-// zustand state
-import { useWalletStore } from "@store/WalletStore";
-import { useTransactionStore } from "@store/transactionStore";
-import { mockApi } from "@services/mockApi";
-import { useEffect } from "react";
-import TransactionTable from "@components/Table";
-import RecentActivities from "./RecentActivities";
+// zustand and api
+import useDashboardStore from "@store/dashboardStore";
+import { useDashboard } from "@hooks/useDashboard";
+import Chart from "./chart";
 
 const DashboardHome = () => {
-  const balance = useWalletStore((state) => state.balance);
-  const commissionPoints = useWalletStore((state) => state.commissionPoints);
-  const setWallet = useWalletStore((state) => state.setWallet);
+  useDashboard();
 
-  
-  const setTransactions = useTransactionStore((state) => state.setTransactions);
-
-  useEffect(() => {
-    const load = async () => {
-      const res = await mockApi.getWallet();
-
-      setWallet(res.balance, res.commissionPoints);
-      setTransactions(res.transactions);
-    };
-
-    load();
-  }, []);
-  const handleDeposit = async () => {
-    try {
-      console.log("Deposit clicked");
-
-      const res = await mockApi.deposit(1000);
-
-      console.log("API response:", res);
-
-      setWallet(res.balance, res.commissionPoints);
-      setTransactions(res.transactions);
-    } catch (err) {
-      console.error("Deposit error:", err);
-    }
-  };
+  const { walletBalance, totalPointValue, commissionPoint } =
+    useDashboardStore();
   return (
     <div className="space-y-10">
       <Row gutter={[16, 16]}>
@@ -62,7 +33,7 @@ const DashboardHome = () => {
                   <p className="text-xl">Ar</p>
                   <p className="text-gray-600">
                     <span className="text-2xl sm:text-5xl font-semibold">
-                      {balance}
+                      {walletBalance}
                     </span>
                     : 00
                   </p>
@@ -75,7 +46,7 @@ const DashboardHome = () => {
                   type="primary"
                   size="large"
                   className="text-white  text-xl  "
-                  onClick={handleDeposit}
+                  // onClick={handleDeposit}
                 />
               </div>
             </div>
@@ -83,20 +54,16 @@ const DashboardHome = () => {
         </Col>
         <Divider orientation="vertical" className="md:h-35!" />
         <Col xs={24} md={11}>
-          <Card className="h-35! bg-gray-100! border-0">
+          <div className="h-35! bg-gray-100! border p-1 border-gray-200 shadow-md rounded-md">
             <div className="flex flex-col h-full ">
-              <p className="text-sm sm:text-xl text-[#757A89] font-normal mb-2">
+              <p className="text-sm text-center text-[#757A89] font-normal ">
                 Measure your earnings at a glance
               </p>
-              <div className="h-20 w-full">
-                <img
-                  src={GraphOnEmtystate}
-                  alt="graph"
-                  className="object-cover w-full h-full"
-                />
+              <div className="h-30 w-full">
+                <Chart />
               </div>
             </div>
-          </Card>
+          </div>
         </Col>
       </Row>
       <div className="mt-6! text-[#BABCC4]">Point value & Incentives</div>
@@ -110,7 +77,9 @@ const DashboardHome = () => {
               <p className="text-[#757A89]">Total Point Value</p>
             </div>
             <p className="text-gray-600">
-              <span className="text-2xl sm:text-5xl font-semibold">0</span>
+              <span className="text-2xl sm:text-5xl font-semibold">
+                {totalPointValue}
+              </span>
             </p>
           </Card>
         </Col>
@@ -127,7 +96,7 @@ const DashboardHome = () => {
               <p className="text-xl">Ar</p>
               <p className="text-gray-600">
                 <span className="text-2xl sm:text-5xl font-semibold">
-                  {commissionPoints}
+                  {commissionPoint}
                 </span>
                 : 00
               </p>
