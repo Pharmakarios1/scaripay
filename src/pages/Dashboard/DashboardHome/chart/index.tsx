@@ -18,7 +18,7 @@ const Chart = () => {
           <XAxis dataKey="date" />
           <YAxis />
           <Tooltip />
-          <Line dataKey="value" />
+          <Line dataKey="value" stroke="#4f46e5" strokeWidth={2} />
         </LineChart>
       </ResponsiveContainer>
     </div>

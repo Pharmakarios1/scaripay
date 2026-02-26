@@ -1,13 +1,25 @@
-import { getDB, saveDB } from "@services/mockApi";
+import { delay, generateDashboard, getDB, saveDB } from "@services/mockApi";
 
-export const deposit = async (userId: string, amount: number) => {
+export const addMoneyApi = async (userId: string, amount: number) => {
+  await delay();
+
   const db = getDB();
+
+  const user = db.users[userId];
+
+  if (!user) throw new Error("User not found");
+
+  // ensure dashboard exists
+  if (!db.dashboard[userId]) {
+    db.dashboard[userId] = generateDashboard();
+  }
+
   const dashboard = db.dashboard[userId];
 
+  // update balance
   dashboard.balance += amount;
-  dashboard.totalPointValue += amount;
-  dashboard.commissionPoint += amount * 0.02;
 
+  // add transaction
   dashboard.transactions.unshift({
     id: crypto.randomUUID(),
     type: "credit",
@@ -15,6 +27,7 @@ export const deposit = async (userId: string, amount: number) => {
     date: new Date().toISOString(),
   });
 
+  // add activity
   dashboard.activities.unshift({
     id: crypto.randomUUID(),
     message: `Deposited ₦${amount}`,

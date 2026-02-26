@@ -10,14 +10,37 @@ import commission from "@assets/commision icon.png";
 import GiftIcon from "@assets/Gift Icon.png";
 // zustand and api
 import useDashboardStore from "@store/dashboardStore";
-import { useDashboard } from "@hooks/useDashboard";
+
 import Chart from "./chart";
+import { useAuthStore } from "@store/AuthStore";
+import { useEffect } from "react";
 
 const DashboardHome = () => {
-  useDashboard();
+  const user = useAuthStore((state) => state.user);
 
-  const { walletBalance, totalPointValue, commissionPoint } =
-    useDashboardStore();
+  const {
+    walletBalance,
+    totalPointValue,
+    commissionPoint,
+
+    transactions,
+
+    fetchDashboard,
+    addMoney,
+  } = useDashboardStore();
+
+  useEffect(() => {
+    if (user?.id) {
+      fetchDashboard(user.id);
+    }
+  }, [user]);
+
+  const handleAddMoney = () => {
+    addMoney(user.id, 5000);
+    // console.log(user.id);
+    console.log("dashboard", user.dashboard);
+  };
+
   return (
     <div className="space-y-10">
       <Row gutter={[16, 16]}>
@@ -46,7 +69,7 @@ const DashboardHome = () => {
                   type="primary"
                   size="large"
                   className="text-white  text-xl  "
-                  // onClick={handleDeposit}
+                  onClick={handleAddMoney}
                 />
               </div>
             </div>
@@ -119,7 +142,10 @@ const DashboardHome = () => {
         <Col xs={24} md={12}>
           <div className="my-5 text-[#babcc4]">Latest Transactions</div>
 
-          <TransactionTable />
+          <TransactionTable
+            transactions={transactions}
+            title="Recent Transactions"
+          />
         </Col>
         <Col xs={24} md={12}>
           <div className="my-5 text-[#babcc4]">Recent Activities</div>
