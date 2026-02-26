@@ -1,6 +1,8 @@
+// src/services/mockApi.ts
 // =============================
 // TYPES
 // =============================
+
 export type User = {
   id: string;
   phone: string;
@@ -46,6 +48,7 @@ interface MockDB {
 // =============================
 // LOCAL STORAGE HELPERS
 // =============================
+
 const STORAGE_KEY = "mock-finance-db";
 
 export const getDB = (): MockDB => {
@@ -60,6 +63,8 @@ export const saveDB = (db: MockDB) => {
 // =============================
 // DASHBOARD HELPERS
 // =============================
+
+// simulate network delay
 export const delay = (ms = 500) =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -97,17 +102,6 @@ export const generateDashboard = (): DashboardData => ({
 // =============================
 // DASHBOARD API
 // =============================
-
-// ensure user exists in DB, auto-create if missing
-const ensureUserInDB = (user: User) => {
-  const db = getDB();
-  if (!db.users[user.id]) {
-    db.users[user.id] = user;
-    db.dashboard[user.id] = generateDashboard();
-    saveDB(db);
-  }
-  return db;
-};
 
 // get dashboard
 export const getDashboardApi = async (userId: string) => {
@@ -162,6 +156,7 @@ export const addMoneyApi = async (userId: string, amount: number) => {
 // =============================
 // PASSWORD RESET API
 // =============================
+
 type ResetToken = {
   email: string;
   token: string;
