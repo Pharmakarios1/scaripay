@@ -71,7 +71,7 @@ const LoginForm = () => {
         {/* Submit */}
         <Form.Item>
           <CustomButton
-            title="Sign Up"
+            title="Login"
             type="primary"
             size="large"
             className="w-full!"

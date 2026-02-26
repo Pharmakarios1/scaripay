@@ -15,6 +15,7 @@ import PhoneValidation from "@pages/Auth/Otp";
 import ResetPassword from "@pages/Auth/reset-password/_partials/InputText";
 import ForgotPasswordCOm from "@pages/Auth/forgot-password";
 import ProtectedRoute from "@components/ProtectRoute";
+import UserIndex from "@pages/User";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
       <Route path="/otp" element={<PhoneValidation />} />
       <Route path="/forgot-password" element={<ForgotPasswordCOm />} />
       <Route path="/reset-password/:token" element={<ResetPassword />} />
+      <Route path="/user" element={<UserIndex />} />
     </Routes>
   );
 }
