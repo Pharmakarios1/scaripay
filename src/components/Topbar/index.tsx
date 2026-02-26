@@ -2,10 +2,10 @@ import { useState } from "react";
 
 //components
 import { BellOutlined, MenuOutlined, UserOutlined } from "@ant-design/icons";
-import { Card } from "antd";
+
 import CustomDrawer from "@components/Drawer";
 import Sidebar from "@components/Sidebar";
-import LogoutButton from "@pages/Auth/logout";
+
 
 //api and state
 import { useResponsive } from "ahooks";

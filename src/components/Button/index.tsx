@@ -1,8 +1,9 @@
 import { Button } from "antd";
+import type { ReactNode } from "react";
 
 interface ButtonProps {
   title: string;
-  icon?: string;
+  icon?: ReactNode;
   type?: "primary" | "text";
   size?: "large";
   className?: string;
