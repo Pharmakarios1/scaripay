@@ -88,7 +88,6 @@ const UserIndex = () => {
             title="Logout"
             type="primary"
             size="large"
-            danger
             icon={<LogoutOutlined />}
             className="w-full bg-red-600!"
             onClick={handleLogout}
